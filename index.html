@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Ammi 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin:0;
+    background: linear-gradient(135deg,#f8e8e8,#f3dada);
+    font-family:'Playfair Display';
+    overflow-x:hidden;
+}
+
+/* CENTER EVERYTHING */
+.center {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+/* STAGE 1 */
+#stage1 {
+    height:100vh;
+    flex-direction:column;
+}
+.q {
+    font-family:'Great Vibes';
+    font-size:2.5rem;
+    color:#a67c7c;
+}
+.btn {
+    margin-top:20px;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background:#fff;
+}
+
+/* STAGE 2 */
+#stage2 {
+    display:none;
+    height:200vh;
+}
+
+/* ENVELOPE */
+.envelope {
+    position:sticky;
+    top:15%;
+    margin:auto;
+    width:90%;
+    max-width:400px;
+    height:260px;
+    background:#e6bcbc;
+    border-radius:14px;
+}
+
+/* FLAP */
+.flap {
+    position:absolute;
+    width:100%;
+    height:120px;
+    background:#d79a9a;
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+    transform-origin:top;
+}
+
+/* FROM TEXT */
+.from {
+    position:absolute;
+    bottom:10px;
+    width:100%;
+    text-align:center;
+    font-family:'Great Vibes';
+    color:#fff;
+}
+
+/* LETTER */
+.letter {
+    position:absolute;
+    bottom:0;
+    left:5%;
+    width:90%;
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    opacity:0;
+    transform:translateY(80px);
+    transition:1s;
+    font-size:14px;
+}
+
+/* FINAL */
+#stage3 {
+    display:none;
+    height:100vh;
+    flex-direction:column;
+}
+
+.hbd {
+    font-family:'Great Vibes';
+    font-size:3rem;
+    color:#a67c7c;
+    opacity:0;
+}
+
+.sign {
+    font-family:'Great Vibes';
+    font-size:1.5rem;
+    margin-top:10px;
+    opacity:0;
+}
+</style>
+</head>
+
+<body>
+
+<div id="stage1" class="center">
+    <div class="q">Is this the birthday girl? 💖</div>
+    <button class="btn" onclick="start()">Yes ✨</button>
+</div>
+
+<div id="stage2">
+    <div class="envelope">
+        <div class="flap" id="flap"></div>
+
+        <div class="letter" id="letter">
+            <p>
+            My dearest Ammi 💖<br><br>
+
+            Even when you're strict with me… I know it's because you love me deeply.  
+            You’ve always been my strength, my comfort, and my safe place.  
+
+            I may not say it enough, but I notice everything you do for me… and I carry that love with me always.  
+
+            I love you endlessly 💗  
+
+            — Suraiya
+            </p>
+        </div>
+
+        <div class="from">From Suraiya 💖 To Ammi</div>
+    </div>
+</div>
+
+<div id="stage3" class="center">
+    <div class="hbd" id="hbd">Happy Birthday Ammi 💖</div>
+    <div class="sign" id="sign">with love, suri &lt;3</div>
+</div>
+
+<script>
+function start(){
+ document.getElementById("stage1").style.display="none";
+ document.getElementById("stage2").style.display="block";
+}
+
+window.addEventListener("scroll",()=>{
+ let y=window.scrollY;
+
+ flap.style.transform=`rotateX(${Math.min(y/2,180)}deg)`;
+
+ if(y>150){
+  letter.style.opacity="1";
+  letter.style.transform="translateY(-40px)";
+ }
+
+ let max=document.body.scrollHeight-window.innerHeight;
+
+ if(y>max-5){
+  stage2.style.display="none";
+  stage3.style.display="flex";
+
+  setTimeout(()=>hbd.style.opacity="1",500);
+  setTimeout(()=>sign.style.opacity="1",2000);
+ }
+});
+</script>
+
+</body>
+</html>
